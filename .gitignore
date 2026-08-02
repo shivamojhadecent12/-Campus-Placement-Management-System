@@ -1,0 +1,42 @@
+# Maven build output
+target/
+*.class
+*.jar
+*.war
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.m2/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
+logs/
+
+# Database files
+*.db
+*.sqlite
+
+# Environment / Secrets (never commit these)
+*.env
+.env
+application-local.properties
+application-secret.properties
+
+# Spring Boot DevTools
+.spring-boot-devtools.properties

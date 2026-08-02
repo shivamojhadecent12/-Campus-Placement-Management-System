@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Placement Management System</title>
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-hero-gradient min-vh-100 d-flex flex-column justify-content-between">
+
+  <!-- Header / Brand Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pt-3 px-4">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="#">
+        <i class="bi bi-briefcase-fill text-warning me-2 fs-3"></i>
+        <span>CampusPlacement<span class="text-warning">Pro</span></span>
+      </a>
+      <div class="ms-auto">
+        <button class="btn btn-outline-light btn-sm px-3" data-bs-toggle="modal" data-bs-target="#adminLoginModal">
+          <i class="bi bi-shield-lock me-1"></i> Placement Officer Login
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Content & Auth Card Container -->
+  <div class="container py-5">
+    <div class="row align-items-center justify-content-center g-5">
+
+      <!-- Left Side Hero Text -->
+      <div class="col-lg-6 text-white text-center text-lg-start">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 uppercase">
+          <i class="bi bi-rocket-takeoff-fill me-1"></i> Placement Season Active
+        </span>
+        <h1 class="display-4 fw-extrabold mb-3">Launch Your Dream Career Today</h1>
+        <p class="lead opacity-90 mb-4">
+          Connect with top tier companies, check real-time drive eligibility, and track your recruitment journey effortlessly.
+        </p>
+        <div class="d-flex gap-4 justify-content-center justify-content-lg-start text-start">
+          <div>
+            <h3 class="fw-bold text-warning mb-0">100+</h3>
+            <small class="text-light opacity-75">Partner Companies</small>
+          </div>
+          <div class="border-start border-light opacity-50"></div>
+          <div>
+            <h3 class="fw-bold text-warning mb-0">95%</h3>
+            <small class="text-light opacity-75">Placement Rate</small>
+          </div>
+          <div class="border-start border-light opacity-50"></div>
+          <div>
+            <h3 class="fw-bold text-warning mb-0">45 LPA</h3>
+            <small class="text-light opacity-75">Highest Package</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Auth Card -->
+      <div class="col-lg-5 col-md-8">
+        <div class="card glass-card border-0 p-4">
+          
+          <div id="authAlert"></div>
+
+          <ul class="nav nav-tabs border-0 mb-4" id="portalTabs" role="tablist">
+            <li class="nav-item flex-fill text-center" role="presentation">
+              <button class="nav-link w-100 active" id="login-tab" data-bs-toggle="tab" data-bs-target="#studentLoginPane" type="button" role="tab">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Student Login
+              </button>
+            </li>
+            <li class="nav-item flex-fill text-center" role="presentation">
+              <button class="nav-link w-100" id="register-tab" data-bs-toggle="tab" data-bs-target="#studentRegisterPane" type="button" role="tab">
+                <i class="bi bi-person-plus me-1"></i> Register
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="portalTabsContent">
+            
+            <!-- Student Login Form -->
+            <div class="tab-pane fade show active" id="studentLoginPane" role="tabpanel">
+              <form id="studentLoginForm">
+                <div class="mb-3">
+                  <label class="form-label text-dark fw-semibold">College Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="student@college.edu" required />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-dark fw-semibold">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                  Login to Portal <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Student Registration Form -->
+            <div class="tab-pane fade" id="studentRegisterPane" role="tabpanel">
+              <form id="studentRegisterForm">
+                <div class="row g-2">
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Student UID</label>
+                    <input type="text" id="regUid" class="form-control" placeholder="21BCS100" required />
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Full Name</label>
+                    <input type="text" id="regName" class="form-control" placeholder="John Doe" required />
+                  </div>
+                </div>
+                <div class="row g-2">
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Gender</label>
+                    <select id="regGender" class="form-select" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Date of Birth</label>
+                    <input type="date" id="regDob" class="form-control" required />
+                  </div>
+                </div>
+                <div class="row g-2">
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Branch / Dept</label>
+                    <input type="text" id="regBranch" class="form-control" placeholder="Computer Science" required />
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Batch</label>
+                    <input type="text" id="regBatch" class="form-control" placeholder="2021-2025" required />
+                  </div>
+                </div>
+                <div class="row g-2">
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">CGPA</label>
+                    <input type="number" step="0.01" id="regCgpa" class="form-control" placeholder="8.50" required />
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Active Backlogs</label>
+                    <input type="number" id="regBacklogs" class="form-control" value="0" required />
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label text-dark fw-semibold">Email</label>
+                  <input type="email" id="regEmail" class="form-control" placeholder="student@college.edu" required />
+                </div>
+                <div class="row g-2">
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">Phone</label>
+                    <input type="text" id="regPhone" class="form-control" placeholder="9876543210" required />
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <label class="form-label text-dark fw-semibold">City</label>
+                    <input type="text" id="regCity" class="form-control" placeholder="Bangalore" required />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-dark fw-semibold">Password</label>
+                  <input type="password" id="regPassword" class="form-control" placeholder="••••••••" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                  Create Account <i class="bi bi-check-circle ms-1"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal fade" id="adminLoginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-header-title text-white mb-0"><i class="bi bi-shield-lock me-2 text-warning"></i> Placement Officer Login</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div id="adminAuthAlert"></div>
+          <form id="adminLoginForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Admin / Officer Email</label>
+              <input type="email" id="adminEmail" class="form-control" placeholder="admin@college.edu" required value="admin@college.edu" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Password</label>
+              <input type="password" id="adminPassword" class="form-control" placeholder="••••••••" required value="admin123" />
+            </div>
+            <button type="submit" class="btn btn-dark w-100 py-2 fw-bold">Login as Placement Officer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-white-50 py-3">
+    <small>&copy; 2026 Campus Placement Management System. Designed for Colleges & Universities.</small>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if user already logged in
+      const current = AuthManager.getCurrentUser();
+      if (current) {
+        if (current.role === 'STUDENT') window.location.href = '/student-dashboard.html';
+        if (current.role === 'ADMIN') window.location.href = '/admin-dashboard.html';
+      }
+
+      // Student Login
+      document.getElementById('studentLoginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const email = document.getElementById('loginEmail').value;
+          const password = document.getElementById('loginPassword').value;
+          const res = await ApiClient.post('/auth/student/login', { email, password, role: 'STUDENT' });
+          AuthManager.setCurrentUser(res);
+          window.location.href = '/student-dashboard.html';
+        } catch (err) {
+          showAlert('authAlert', 'danger', err.message);
+        }
+      });
+
+      // Student Registration
+      document.getElementById('studentRegisterForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const payload = {
+            s_uid: document.getElementById('regUid').value,
+            s_name: document.getElementById('regName').value,
+            gender: document.getElementById('regGender').value,
+            dob: document.getElementById('regDob').value,
+            branch: document.getElementById('regBranch').value,
+            department: document.getElementById('regBranch').value,
+            batch: document.getElementById('regBatch').value,
+            cgpa: parseFloat(document.getElementById('regCgpa').value) || 0.0,
+            backlogs: parseInt(document.getElementById('regBacklogs').value) || 0,
+            s_email: document.getElementById('regEmail').value,
+            phone: document.getElementById('regPhone').value,
+            city: document.getElementById('regCity').value,
+            s_password: document.getElementById('regPassword').value
+          };
+          const res = await ApiClient.post('/auth/student/register', payload);
+          AuthManager.setCurrentUser(res);
+          window.location.href = '/student-dashboard.html';
+        } catch (err) {
+          showAlert('authAlert', 'danger', err.message);
+        }
+      });
+
+      // Admin Login
+      document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const email = document.getElementById('adminEmail').value;
+          const password = document.getElementById('adminPassword').value;
+          const res = await ApiClient.post('/auth/admin/login', { email, password, role: 'ADMIN' });
+          AuthManager.setCurrentUser(res);
+          window.location.href = '/admin-dashboard.html';
+        } catch (err) {
+          showAlert('adminAuthAlert', 'danger', err.message);
+        }
+      });
+    });
+
+    function showAlert(elementId, type, message) {
+      document.getElementById(elementId).innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>`;
+    }
+  </script>
+</body>
+</html>
