@@ -103,6 +103,3 @@ mvn spring-boot:run
 ### Student:
 - Create a student account using the `Register` link
 ---
-
-## 📜 License
-MIT License
